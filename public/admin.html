@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Panel admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<!-- Gerbang masuk -->
+<section class="gate" id="gate" hidden>
+  <div class="gate__card">
+    <h1>Masuk</h1>
+    <p>Panel ini hanya untuk pemilik situs.</p>
+    <div class="notice" id="loginError" hidden></div>
+    <form id="loginForm">
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn" type="submit" style="width:100%">Masuk</button>
+    </form>
+  </div>
+</section>
+
+<!-- Panel -->
+<div class="admin" id="panel" hidden>
+  <header class="admin__bar">
+    <div class="shell admin__bar-inner">
+      <div class="admin__tabs" role="tablist">
+        <button role="tab" data-tab="posts" aria-selected="true">Tulisan</button>
+        <button role="tab" data-tab="editor" aria-selected="false">Editor</button>
+        <button role="tab" data-tab="profile" aria-selected="false">Profil &amp; proyek</button>
+      </div>
+      <div class="row__actions">
+        <a class="btn btn--ghost" href="/" target="_blank" rel="noopener">Lihat situs</a>
+        <button class="btn btn--ghost" id="logout">Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin__main">
+    <div class="shell">
+
+      <!-- Daftar tulisan -->
+      <section class="panel" data-panel="posts">
+        <div class="band__head">
+          <h1 class="band__title">Tulisan</h1>
+          <button class="btn" id="newPost">Tulis baru</button>
+        </div>
+        <div class="rows" id="postRows"><p class="loading">Memuat…</p></div>
+      </section>
+
+      <!-- Editor -->
+      <section class="panel" data-panel="editor" hidden>
+        <div class="band__head">
+          <h1 class="band__title" id="editorTitle">Tulisan baru</h1>
+          <span class="pill" id="editorStatus" data-status="draft">Draf</span>
+        </div>
+
+        <div class="editor">
+          <div class="editor__main">
+            <div class="field">
+              <label for="title">Judul</label>
+              <input id="title" placeholder="Judul tulisan">
+            </div>
+            <div class="field">
+              <label for="excerpt">Ringkasan</label>
+              <textarea id="excerpt" rows="2" placeholder="Satu atau dua kalimat yang muncul di daftar tulisan."></textarea>
+            </div>
+            <div class="field field--mono">
+              <label for="content">Isi tulisan</label>
+              <div class="toolbar">
+                <button type="button" data-md="h2">Judul bagian</button>
+                <button type="button" data-md="bold">Tebal</button>
+                <button type="button" data-md="italic">Miring</button>
+                <button type="button" data-md="link">Tautan</button>
+                <button type="button" data-md="quote">Kutipan</button>
+                <button type="button" data-md="list">Daftar</button>
+                <button type="button" data-md="code">Kode</button>
+                <button type="button" id="insertImage">Sisipkan gambar</button>
+              </div>
+              <textarea id="content" placeholder="Tulis dengan format Markdown…"></textarea>
+              <p class="field__hint">Format Markdown: ## judul, **tebal**, *miring*, &gt; kutipan, - daftar.</p>
+            </div>
+          </div>
+
+          <aside class="editor__side">
+            <div class="field">
+              <label for="status">Status</label>
+              <select id="status">
+                <option value="draft">Draf</option>
+                <option value="published">Terbit</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="date">Tanggal</label>
+              <input id="date" type="date">
+            </div>
+            <div class="field">
+              <label for="slug">Alamat (slug)</label>
+              <input id="slug" placeholder="otomatis-dari-judul">
+              <p class="field__hint" id="slugPreview">/blog/…</p>
+            </div>
+            <div class="field">
+              <label for="tags">Topik</label>
+              <input id="tags" placeholder="desain, catatan">
+              <p class="field__hint">Pisahkan dengan koma.</p>
+            </div>
+            <div class="field">
+              <label>Gambar sampul</label>
+              <label class="dropzone" id="coverZone">
+                Taruh gambar di sini atau klik untuk pilih berkas
+                <input type="file" id="coverInput" accept="image/*">
+              </label>
+              <div class="bar" id="coverBar" hidden><span></span></div>
+              <div class="thumb" id="coverThumb" hidden><img alt=""></div>
+              <p class="field__hint" id="coverHint"></p>
+            </div>
+            <div class="actions">
+              <button class="btn" id="save">Simpan</button>
+              <button class="btn btn--ghost" id="preview">Pratinjau</button>
+              <button class="btn btn--ghost" id="deletePost" hidden>Hapus</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Profil & proyek -->
+      <section class="panel" data-panel="profile" hidden>
+        <div class="band__head">
+          <h1 class="band__title">Profil &amp; proyek</h1>
+          <button class="btn" id="saveSite">Simpan perubahan</button>
+        </div>
+
+        <div class="editor">
+          <div class="editor__main">
+            <div class="grid-2">
+              <div class="field"><label for="s_name">Nama</label><input id="s_name"></div>
+              <div class="field"><label for="s_role">Peran</label><input id="s_role"></div>
+            </div>
+            <div class="field"><label for="s_tagline">Kalimat pembuka</label><textarea id="s_tagline" rows="2"></textarea></div>
+            <div class="field"><label for="s_about">Tentang</label><textarea id="s_about" rows="6"></textarea></div>
+            <div class="grid-2">
+              <div class="field"><label for="s_location">Lokasi</label><input id="s_location"></div>
+              <div class="field"><label for="s_available">Status ketersediaan</label><input id="s_available"></div>
+              <div class="field"><label for="s_email">Surel</label><input id="s_email" type="email"></div>
+              <div class="field"><label for="s_skills">Keahlian</label><input id="s_skills" placeholder="pisahkan dengan koma"></div>
+            </div>
+            <div class="field">
+              <label>Sampul latar hero</label>
+              <label class="dropzone" id="heroCoverZone">
+                Taruh gambar di sini atau klik untuk pilih berkas
+                <input type="file" id="heroCoverInput" accept="image/*">
+              </label>
+              <div class="bar" id="heroCoverBar" hidden><span></span></div>
+              <div class="thumb" id="heroCoverThumb" hidden><img alt=""></div>
+              <p class="field__hint">Tampil samar di belakang judul, bukan menutupi teks. Kosongkan untuk kembali polos.</p>
+              <button class="btn btn--ghost" id="removeHeroCover" type="button" style="margin-top:0.5rem">Hapus sampul</button>
+            </div>
+            <div class="field">
+              <label>Foto profil</label>
+              <label class="dropzone" id="avatarZone">
+                Taruh gambar di sini atau klik untuk pilih berkas
+                <input type="file" id="avatarInput" accept="image/*">
+              </label>
+              <div class="bar" id="avatarBar" hidden><span></span></div>
+              <div class="thumb" id="avatarThumb" hidden><img alt=""></div>
+            </div>
+          </div>
+
+          <div class="editor__side">
+            <h2 style="font-family:var(--font-display);font-weight:400;font-size:var(--step-2);margin:0 0 1rem">Tautan sosial</h2>
+            <div class="card-list" id="socialList"></div>
+            <div class="actions"><button class="btn btn--ghost" id="addSocial">Tambah tautan</button></div>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem">
+          <div class="band__head">
+            <h2 class="band__title" style="font-size:var(--step-2)">Proyek</h2>
+            <button class="btn btn--ghost" id="addProject">Tambah proyek</button>
+          </div>
+          <div class="card-list" id="projectList"></div>
+        </div>
+
+        <div style="margin-top:2rem">
+          <div class="band__head">
+            <h2 class="band__title" style="font-size:var(--step-2)">Riwayat</h2>
+            <button class="btn btn--ghost" id="addExperience">Tambah riwayat</button>
+          </div>
+          <div class="card-list" id="experienceList"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/admin.js"></script>
+</body>
+</html>

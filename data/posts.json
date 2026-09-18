@@ -1,0 +1,38 @@
+[
+  {
+    "id": "290b0f22-72d1-4cd4-a3a7-0b7f6d09b080",
+    "slug": "asdasdas",
+    "title": "asdasdas",
+    "excerpt": "",
+    "content": "\n![362739561-0b033e7d-177f-4bca-9edd-2cd8c3811f44](https://ik.imagekit.io/coohd0rjhx/blog/362739561-0b033e7d-177f-4bca-9edd-2cd8c3811f44_YKPvDtMVh.png)\n",
+    "cover": "https://ik.imagekit.io/coohd0rjhx/blog/JavaDuke_6_GMCOPq0.webp",
+    "tags": [],
+    "status": "published",
+    "date": "2026-09-16T00:00:00.000Z",
+    "updatedAt": "2026-09-16T14:22:47.039Z"
+  },
+  {
+    "id": "13f1befd-d860-4898-acad-07bf1cd01af2",
+    "slug": "adsasasd",
+    "title": "adsasasd",
+    "excerpt": "asdasd",
+    "content": "\n```\nprint (\"hello world\")\n\n```\n> kutipan\nasdasdasd\n\n[Link Album saya ](https://www.rifaldialbum.my.id/)\n\n- butir pertama\n- butir kedua\n",
+    "cover": "",
+    "tags": [],
+    "status": "published",
+    "date": "2026-09-16T00:00:00.000Z",
+    "updatedAt": "2026-09-16T14:39:17.885Z"
+  },
+  {
+    "id": "f6762ce9-a4f7-49c0-ad0a-c58a7c2facad",
+    "slug": "script-trucker-job-for-fivem",
+    "title": "Script Trucker job For Fivem",
+    "excerpt": "",
+    "content": "[LINK GITHUB](https://github.com/franzheinau/script_truker_faldi)\n\n**Here, you can change each of the routes.**\n```\nConfig = {}\n\nConfig.JobStart = {\n    coords = vector3(855.92, 2189.27, 52.3),\n    npcModel = \"s_m_m_dockwork_01\",\n    heading = 52.3\n}\nConfig.TankerModel = 'tanker'\nConfig.TruckModel = 'phantom'\n\nConfig.SpawnTruckPoint = vector4(848.34, 2208.95, 50.67, 27.24) -- Misal 5 meter dari NPCa\n-- Daftar semua pom bensin\nConfig.DeliveryPoints = {\n    vector3(37.59, 2783.06, 57.88), --ini udah \n    vector3(1990.64, 3763.7, 32.18), --ini udah\n   vector3(1058.9, 2672.04, 39.55), --ini udah\n   vector3(2664.55, 3255.83, 55.24),  --ini udah\n    vector3(2580.01, 320.25, 108.44), --ini udah\n    vector3(1688.14, 6419.37, 32.45), --ini udah\n    vector3(624.87, 252.42, 103.03),  --ini udah\n    vector3(199.39, 6605.85, 31.7),  --ini udah\n    vector3(-2540.82, 2340.15, 33.06), --ini udah\n    vector3(-1817.33, 808.09, 138.62), --- ini udah\n    vector3(-318.5, -1492.21, 30.58), ---ini udah\n    vector3(1179.27, -315.38, 69.18), -- ini udah\n   vector3(-726.88, -917.58, 19.01), --- ini udah\n    vector3(-67.18, -1747.66, 29.43), ---ini udah\n    vector3(288.75, -1244.53, 29.23), --- ini udah\n    vector3(809.66, -1042.76, 26.57), --- ini udah\n}\n\nConfig.ReturnPoint = vector3(850.32, 2203.5, 52.94)\n```\n![1343089](https://ik.imagekit.io/coohd0rjhx/blog/1343089_xwQo6gCHL.jpeg)",
+    "cover": "https://ik.imagekit.io/coohd0rjhx/blog/https___qiita-image-store.s3.ap-northeast-1.amazonaws.com_0_21785_b55e4b40-48e7-e54d-af3f-9882a99a1ef0_49ZkKm7as.avif",
+    "tags": [],
+    "status": "published",
+    "date": "2026-09-16T00:00:00.000Z",
+    "updatedAt": "2026-09-16T14:58:19.775Z"
+  }
+]

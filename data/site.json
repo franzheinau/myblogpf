@@ -1,0 +1,37 @@
+{
+  "name": "Rifaldi",
+  "role": "Web Developer & Devloper Game",
+  "tagline": "Saya merancang dan membangun produk digital yang rapi, cepat, dan enak dipakai.",
+  "about": "Tulis cerita singkat tentang dirimu di sini. Apa yang kamu kerjakan, bagaimana cara kamu bekerja, dan hal apa yang sedang kamu pelajari sekarang.",
+  "location": "Banjarmasin, Indonesia",
+  "available": "Terbuka untuk proyek freelance",
+  "email": "nrfaldi8@gmail.com",
+  "avatar": "https://ik.imagekit.io/coohd0rjhx/blog/JavaDuke_xShPQ5avv.webp",
+  "socials": [
+    {
+      "label": "Instagram",
+      "url": "https://instagram.com/"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/"
+    },
+    {
+      "label": "Facebook",
+      "url": ""
+    }
+  ],
+  "skills": [
+    "Web Dev",
+    "Dev Server Fivem"
+  ],
+  "projects": [],
+  "experience": [
+    {
+      "period": "2025 — sekarang",
+      "title": "Co-DEV",
+      "org": "Axiom Roleplay ID",
+      "note": "Saya akan bekerja dengan sungguh sungguh"
+    }
+  ]
+}

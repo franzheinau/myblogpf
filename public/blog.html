@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tulisan</title>
+<meta name="description" content="Catatan, proses kerja, dan hal-hal yang sedang dipelajari.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Lompat ke konten</a>
+
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="/"><span data-site="name">Portofolio</span><i>ZHR</i></a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav">
+      <a href="/#tentang">Tentang</a>
+      <a href="/#kerja">Kerja</a>
+      <a href="/blog" aria-current="page">Tulisan</a>
+      <a href="/#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="band">
+  <div class="shell">
+    <div class="band__head">
+      <h1 class="band__title">Tulisan</h1>
+      <p class="band__note">Catatan proses, percobaan, dan hal yang sedang dipelajari.</p>
+    </div>
+
+    <div class="searchbox">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="7" cy="7" r="5" stroke="currentColor"/><path d="M11 11l4 4" stroke="currentColor"/>
+      </svg>
+      <input type="search" id="q" placeholder="Cari judul atau isi tulisan" aria-label="Cari tulisan">
+    </div>
+
+    <ul class="tagbar" data-tags></ul>
+    <div class="index" data-posts><p class="loading">Memuat tulisan…</p></div>
+  </div>
+</main>
+
+<footer class="colophon">
+  <div class="shell">
+    <p style="margin:0 0 1rem;font-size:0.85rem;opacity:.7">Punya proyek atau sekadar ingin menyapa?</p>
+    <a class="colophon__mail" data-site-email href="#"></a>
+    <div class="colophon__grid">
+      <span>© <span data-year></span> <span data-site="name"></span></span>
+      <ul class="colophon__links" data-socials></ul>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/blog.js"></script>
+</body>
+</html>
