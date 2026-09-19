@@ -426,7 +426,7 @@
             <input data-project="image" value="${esc(p.image || '')}" placeholder="Alamat gambar ImageKit">
             <p class="field__hint"><button class="btn btn--ghost" data-upload="project" type="button">Unggah gambar</button></p>
           </div>
-          ${p.image ? `<div class="thumb"><img src="${esc(thumb(p.image, 600))}" alt=""></div>` : ''}
+          ${p.image ? `<div class="thumb thumb--project"><img src="${esc(thumb(p.image, 600))}" alt=""></div>` : ''}
           <div class="actions"><button class="btn btn--ghost" data-remove="project">Hapus proyek</button></div>
         </fieldset>`
       )

@@ -218,6 +218,7 @@ button {
   padding-block: clamp(3.5rem, 9vw, 7.5rem) clamp(3rem, 7vw, 6rem);
   position: relative;
   isolation: isolate;
+  overflow: hidden;
 }
 
 /* Sampul latar hero. Kalau tidak diisi dari panel admin, elemen ini
@@ -226,22 +227,25 @@ button {
   position: absolute;
   inset: 0;
   z-index: -1;
+  background-color: var(--cream-deep);
   background-size: cover;
-  background-position: center;
-  filter: grayscale(0.3);
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: grayscale(0.42) contrast(0.88) brightness(1.08);
 }
 
-/* Lapisan transparan tipis: foto tetap terlihat jelas, tapi judul hitam
-   di atasnya tidak tenggelam. Sisi bawah dibuat lebih pekat supaya
-   teks di dekat situ (kalau ada) selalu aman dibaca. */
+/* Gambar dibuat memudar dari warna header agar sambungannya tidak terlihat
+   seperti terpotong. Lapisan ini juga menjaga teks tetap mudah dibaca. */
 .hero__bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--paper) 38%, transparent),
-    color-mix(in srgb, var(--paper) 55%, transparent)
+    var(--paper) 0,
+    color-mix(in srgb, var(--paper) 88%, transparent) 3rem,
+    color-mix(in srgb, var(--paper) 70%, transparent) 9rem,
+    color-mix(in srgb, var(--paper) 66%, transparent) 100%
   );
 }
 
@@ -281,56 +285,21 @@ button {
 
 .hero__lede {
   max-width: 44ch;
-  color: var(--ink-soft);
+  color: var(--ink);
   font-size: var(--step-1);
   line-height: 1.5;
   margin: 0;
-}
-
-.hero__side {
-  border-left: 1px solid var(--rule);
-  padding-left: clamp(1rem, 2vw, 1.75rem);
-  display: grid;
-  gap: 1.1rem;
-  font-size: var(--step--1);
-  color: var(--ink-soft);
-}
-
-.hero__side dt {
-  color: var(--ink-faint);
-  margin-bottom: 0.15rem;
-}
-
-.hero__side dd {
-  margin: 0;
-  color: var(--ink);
-}
-
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.status::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ink);
-  animation: pulse 2.6s var(--ease) infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.8); }
+  text-shadow: 0 1px 1rem rgb(255 255 255 / 0.9);
 }
 
 /* Bingkai foto wajah. Ukurannya tetap: gambar sebesar apa pun
    yang diunggah akan dipotong rapi mengikuti bingkai ini. */
 .portrait {
-  margin: clamp(2.5rem, 6vw, 4rem) 0 0 auto;
-  width: clamp(13rem, 26vw, 19rem);
+  margin: 0 0 0 auto;
+  width: clamp(12rem, 22vw, 16rem);
+  max-width: 100%;
+  justify-self: end;
+  align-self: end;
   aspect-ratio: 4 / 5;
   background: var(--cream);
   border: 1px solid var(--rule);
@@ -363,20 +332,14 @@ button {
 
 @media (max-width: 860px) {
   .portrait {
-    margin-inline: 0;
-    width: min(100%, 15rem);
+    margin: 2rem auto 0;
+    justify-self: center;
+    width: min(70vw, 15rem);
   }
 }
 
 @media (max-width: 860px) {
   .hero__grid { grid-template-columns: 1fr; }
-  .hero__side {
-    border-left: 0;
-    border-top: 1px solid var(--rule);
-    padding-left: 0;
-    padding-top: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* =========================================================
@@ -499,12 +462,13 @@ button {
 }
 
 .work__media {
-  aspect-ratio: 4 / 3;
+  height: clamp(11rem, 25vw, 15rem);
   background: var(--cream-deep);
   overflow: hidden;
 }
 
 .work__media img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1207,6 +1171,9 @@ input:-webkit-autofill:focus {
   overflow: hidden;
   background: var(--cream-deep);
 }
+
+/* Preview sampul proyek cukup besar untuk diperiksa, tanpa memenuhi panel. */
+.thumb--project { max-width: 32rem; }
 
 .thumb img { width: 100%; height: 100%; object-fit: cover; }
 
